@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Der Meeting-Monolog | EVOLVION LEADERSHIP ADVISORY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Manrope:wght@300;400;500;600&family=Herr+Von+Muellerhoff&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette - Classic Refined */
+            --col-amber: #D97A00;
+            /* "Amber-Punch" (Executive Orange) */
+            --col-exec-grey: #2F2F2F;
+            /* "Executive-Grey" (Dark Charcoal) */
+            --col-dim-grey: #595959;
+
+            --bg-white: #ffffff;
+            --bg-champagne: #F5EFE6;
+            /* Champagne Mist */
+            --bg-silver: #F2F2F4;
+            /* Warm Silver Grey */
+            --bg-sky: #D9E7F2;
+            /* Executive Sky */
+            --bg-black: #000000;
+
+            /* Mappings */
+            --bg-body: var(--bg-white);
+            --text-main: var(--col-exec-grey);
+            --text-light: var(--col-dim-grey);
+            --accent: var(--col-amber);
+            --line-color: rgba(47, 47, 47, 0.15);
+            /* Subtler grey line */
+
+            /* Dimensions */
+            --page-width: 1200px;
+            --gutter: 4vw;
+            --spacing-section: 12rem;
+        }
+
+        @media (max-width: 850px) {
+            :root {
+                --spacing-section: 6rem;
+                --gutter: 1.5rem;
+            }
+        }
+
+        /* RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Manrope', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* TYPOGRAPHY */
+        h1,
+        h2,
+        h3,
+        h4,
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            margin-bottom: 2rem;
+            max-width: 38em;
+            color: var(--text-main);
+            font-weight: 300;
+        }
+
+        .text-lead {
+            font-size: 1.4rem;
+            line-height: 1.5;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--col-dim-grey);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.6;
+        }
+
+        /* UTILS */
+        .container {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        .section-spacer {
+            padding: var(--spacing-section) 0;
+        }
+
+        .divider-line {
+            width: 100%;
+            height: 1px;
+            background-color: var(--line-color);
+            margin: 0;
+        }
+
+        .btn-text {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 3px;
+        }
+
+        /* HEADER */
+        header {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--line-color);
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            transition: box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            display: block;
+            line-height: 1;
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--line-color);
+            background: var(--bg-silver);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 850px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-main {
+                margin-bottom: 0.5rem;
+            }
+
+            nav ul {
+                gap: 1.25rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo-main">Evolvion <span style="font-weight: 300;">Leadership
+                    Advisory</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#services">Leistungen</a></li>
+                    <li><a href="index.html#profil">Profil</a></li>
+                    <li><a href="index.html#ansatz">Wie ich arbeite</a></li>
+                    <li><a href="index.html#blog">Insights</a></li>
+                    <li><a href="index.html#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section-spacer" style="padding-top: 6rem;">
+        <article style="max-width: 800px; margin: 0 auto;">
+            <div
+                style="color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-size: 0.85rem;">
+                #01 · März 2026</div>
+            <h1>When your boss isn’t your fan anymore.</h1>
+            <p class="text-lead">What happens when an executive’s career suddenly stalls under a new leader?</p>
+
+            <div class="divider-line" style="margin: 3rem 0; opacity: 0.5;"></div>
+
+            <p>How does it feel to realize you lack support from your superior — paired with the uncomfortable sense that the relationship itself might be strained? What if this perceived distance is not about performance, but about something harder to grasp?</p>
+
+            <p>In this case, the executive in question did well by all objective measures. She delivered on KPIs, had enjoyed strong visibility, and had benefited from consistent encouragement and sponsorship from previous bosses. Her career trajectory reflected this: early promotions, a strong personal brand, and growing recognition across the organization.</p>
+
+            <p>Her new boss, however, did not join the chorus. Praise was sparse. Support felt muted. Gradually, she began to lose her mojo. Former managers noticed the shift and encouraged her to seek coaching.</p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">Getting to the real issue: you own it more than you think</h3>
+            <p>When we first met to clarify the coaching mandate, the core issue was not immediately visible. Initially, she described her dissatisfaction in terms of stress, workload, and general exhaustion. These themes were real — but they were not the root cause.</p>
+
+            <p>It didn’t take long for a deeper realization to surface: what was troubling her most was the non‑relationship with her new boss and the perceived lack of support.</p>
+
+            <p>Allowing space for frustration and complaint proved important. As she talked, she began to hear herself. She recognized how strongly she was blaming her boss for a perceived lack of support and unfair treatment. Beneath that blame sat a longing to return to an earlier chapter of her career — a time when she had felt visibly endorsed, celebrated, and unmistakably seen as “the star.”</p>
+
+            <p>As we stayed with the question, something else emerged. The more she examined the situation, the clearer it became that some of her own behaviors might have contributed to the dynamic. She began to take ownership — more than she had expected, and more than felt comfortable at first.</p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">From performance to sponsorship</h3>
+            <p>A decisive insight came when we explored what truly distinguishes impressive careers from merely successful ones.</p>
+
+            <p>She recognized that all the senior executives she admired had done something in addition to delivering results. Performance had been necessary — but never sufficient. Those who progressed sustainably had learned how to generate goodwill, trust, and advocacy on their behalf. Relevant mentors didn’t just appreciate their output; they saw something in them that made them want to invest.</p>
+
+            <p>Until now, she had benefited naturally from such sponsorship. With a new boss, that dynamic had stalled — and it felt frustrating and unfair.</p>
+
+            <p>At the same time, she realized something liberating: she had more influence than she initially believed. The challenge was no longer to regain approval, but to accept responsibility for shaping the conditions under which support could emerge.</p>
+
+            <p>Her conclusion was simple, and demanding: <em>“I have to get through this. It is my responsibility to get the support I want.”</em></p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">Not a dilemma, but a developmental threshold</h3>
+            <p>Over time it became clear that this situation was not a classic dilemma with mutually exclusive options. Very few leadership situations truly are. More often, growth requires finding a third path — one that integrates tensions rather than choosing sides. Considering a dilemma a “trilemma” and addressing it as such is a defining capability to top executives. Find new alternatives, work towards them and gather support in the organization. This case was exactly that kind of developmental threshold.</p>
+
+            <p>That said, this does not deny that some organizational contexts or leaders genuinely limit sponsorship. Yet even there, how an executive positions herself remains decisive for her long-term trajectory.</p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">Transition 1: From being technically excellent to becoming wise</h3>
+            <p>One central theme of her learning journey was the transition from being technically excellent and delivering results to becoming wise in her approach and management of relationship. Technical mastery had never been the issue. What changed was her understanding that no substantive discussion exists without a relational dimension.</p>
+
+            <p>Wisdom, in this sense, is not about softening content or avoiding clarity. It is about addressing facts in the light of relationships, context, and consequences. Arguments gain weight not through logic alone, but through the relational field in which they are placed.</p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">Transition 2: From being personally convincing to being sovereign</h3>
+            <p>A second shift was moving from being personally convincing by knowing and conveying the answer to being sovereign. She realized that she wanted to please by solving the issue – with no politics and no hidden agenda but with a deeply rooted longing for recognition and praise. Her personal integrity proved essential — but insufficient.</p>
+
+            <p>Sovereignty meant not being louder or clearer but able to fully live with the consequences of one’s actions at any time, regardless of whether those actions were fully understood or welcomed by others. This inner independence gave her positions a different gravity. What changed was not what she said, but the stance from which she spoke.</p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">Transition 3: Learning to be open — without being naïve</h3>
+            <p>Another important learning field concerned her openness. What she had previously considered as authenticity and transparency began to reveal a naïve side. Unconditional openness – often driven by her need for harmony - can have unintentional consequences in terms of a perceived lack of stature for wanting to please beyond what the situation and the counterpart require.</p>
+
+            <p>The challenge was not about becoming tactical or manipulative — quite the opposite. It was about learning to be clever without losing authenticity: choosing consciously when openness serves the situation and when it becomes a restraint.</p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">Small tokens to work on for leadership growth</h3>
+            <p>Several imbalances seemed to be relevant in her way forward. At times, she had shown too little coolness and too much need for fairness and recognition. The resulting insight was freeing: she would continue to do an excellent job, act with integrity, and think in the interest of the whole — but she was not responsible for everything. Only for her own actions and decisions.</p>
+
+            <p>A similar pattern appeared around closeness and distance. Too much emotional investment had made her unnecessarily vulnerable. Reducing vulnerability did not mean becoming colder; it meant consciously deciding whose judgment truly mattered and lowering the emotional weight of all others.</p>
+
+            <p>Finally, a quieter but no less important insight emerged around pride and self‑criticism. Her internal bar was high — sometimes too high. Excessive self‑criticism had slowly eroded confidence.</p>
+
+            <p>Relearning pride did not mean arrogance. It meant maintaining access to her own evidence of competence and impact. She developed the habit of regularly revisiting her personal “gallery of successes” — not as an emergency measure in moments of doubt, but as a steady reminder of who she is and what she brings.</p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">Taking charge brought back the momentum</h3>
+            <p>With these insights, she began to work differently — less driven by the need for endorsement and more guided by inner clarity. Over time, support followed not because she asked for it, but because it had become natural to give it. She crossed a threshold: support was no longer something she waited for, but something her presence quietly invited.</p>
+
+            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 3rem;"><em>* This case is a composite, inspired by multiple leadership journeys. Details have been altered to protect anonymity.</em></p>
+
+            <div style="margin-top: 4rem;">
+                <a href="index.html#blog" class="btn-text">&larr; Zurück zur Übersicht</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                &copy; 2026 Evolvion Leadership Advisory
+            </div>
+            <div>
+                <a href="#" style="margin-left: 2rem;">Impressum</a>
+                <a href="#" style="margin-left: 2rem;">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky header shadow on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 10);
+        });
+    </script>
+
+    <script
+        src="https://visual-feedback-tool.vercel.app/api/embed.js?key=f97c2f2422adf75cd015ed16a6a45955b45ab5bbfb6518a7"></script>
+</body>
+
+</html>
