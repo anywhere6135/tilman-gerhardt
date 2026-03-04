@@ -52,7 +52,24 @@ Projektphase: Feedback-Einarbeitung → **Website live auf Vercel** ✅
 
 ---
 
-## 🚀 Deployment-Infrastruktur
+## 🔷 WordPress-Infrastruktur (Lokale Entwicklung)
+
+| | |
+|---|---|
+| **Docker** | Colima + docker compose (WordPress + MariaDB) |
+| **Starten** | `colima start && cd webprinzip-tilman-gerhardt && docker compose up -d` |
+| **Tunnel** | `cloudflared tunnel --url http://localhost:8080 > /tmp/cloudflared.log 2>&1 &` |
+| **Tunnel-URL** | Aus `/tmp/cloudflared.log` lesen (ändert sich bei Neustart) |
+| **WP Admin** | `[tunnel-url]/wp-admin` · User: `webprinzip` |
+| **App-Password** | `hyXkFjNwjeXkHrOZYQ9frZAz` (WP REST API) |
+| **Theme** | `wordpress-theme/tilman-gerhardt/` |
+| **Content-Script** | `wordpress-theme/tilman-gerhardt/setup/create-page.php` |
+| **Inhalt updaten** | Script mit `--update` flag aufrufen → patcht Seite per API |
+| **Nächste Phase** | WPML von Florian → Mehrsprachigkeit einrichten |
+
+---
+
+## 🚀 Static Deployment-Infrastruktur
 
 | | |
 |---|---|

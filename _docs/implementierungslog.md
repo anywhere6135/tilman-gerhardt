@@ -33,6 +33,33 @@ Dieses Dokument trackt chronologisch was umgesetzt wurde, auf welcher Basis (Fee
 
 ---
 
+## ✅ 04.03.2026 — WordPress-Portierung Phase 1
+
+**Basis:** Sprachnachricht Florian (03.03.2026) — WordPress mit Gutenberg + ACF
+
+### Umgesetzt
+- Colima + Docker installiert
+- WordPress + MariaDB Container (localhost:8080) via docker-compose
+- WP-CLI installiert, WordPress eingerichtet (User: webprinzip)
+- ACF (Advanced Custom Fields) installiert + aktiviert
+- Cloudflare-Tunnel für Online-Zugriff eingerichtet
+- Leeres Custom-Theme `tilman-gerhardt` erstellt mit:
+  - `style.css`, `functions.php`, `header.php`, `footer.php`, `index.php`
+  - Gutenberg-Block-Content aus Original-HTML generiert (15 Blöcke)
+- Alle 5 Asset-Bilder in WP-Mediathek importiert
+- Startseite per WP REST API angelegt (Page ID: 4)
+- Hauptnavigation mit 5 Ankerpunkten erstellt
+- Setup-Script `create-page.php` → updatet Seite via WP REST API
+- Theme + Setup-Scripts committed nach `wordpress-theme/`
+
+### Noch offen
+- ⏳ WPML von Florian → Mehrsprachigkeit (DE/EN)
+- ⏳ Tunnel-URL ändert sich bei Neustart → WP-URL manuell updaten
+- ⏳ Eigener ACF-Block für jeden Abschnitt (aktuell: core/html-Blöcke)
+- ⏳ Custom Block-Editor-Unterstützung verbessern
+
+---
+
 ## Format für zukünftige Einträge
 
 ```

@@ -1,0 +1,1433 @@
+<!-- wp:html -->
+<style>
+:root {
+            /* Palette - Classic Refined */
+            --col-amber: #D97A00;
+            /* "Amber-Punch" (Executive Orange) */
+            --col-exec-grey: #2F2F2F;
+            /* "Executive-Grey" (Dark Charcoal) */
+            --col-dim-grey: #595959;
+
+            --bg-white: #ffffff;
+            --bg-champagne: #F5EFE6;
+            /* Champagne Mist */
+            --bg-silver: #F2F2F4;
+            /* Warm Silver Grey */
+            --bg-sky: #D9E7F2;
+            /* Executive Sky */
+            --bg-black: #000000;
+
+            /* Mappings */
+            --bg-body: var(--bg-white);
+            --text-main: var(--col-exec-grey);
+            --text-light: var(--col-dim-grey);
+            --accent: var(--col-amber);
+            --line-color: rgba(47, 47, 47, 0.15);
+            /* Subtler grey line */
+
+            /* Dimensions */
+            --page-width: 1200px;
+            --gutter: 4vw;
+            --spacing-section: 12rem;
+        }
+
+        @media (max-width: 850px) {
+            :root {
+                --spacing-section: 4rem;
+                --gutter: 1.5rem;
+            }
+        }
+
+        /* RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Manrope', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* TYPOGRAPHY */
+        h1,
+        h2,
+        h3,
+        h4,
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        h1 {
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent);
+            /* Amber Accent */
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 2rem;
+            max-width: 38em;
+            color: var(--text-main);
+            font-weight: 300;
+        }
+
+        .text-lead {
+            font-size: 1.4rem;
+            line-height: 1.5;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--col-dim-grey);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.6;
+        }
+
+        /* UTILS */
+        .container {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        .section-spacer {
+            padding-top: var(--spacing-section);
+            padding-bottom: var(--spacing-section);
+        }
+
+        .divider-line {
+            width: 100%;
+            height: 1px;
+            background-color: var(--line-color);
+            margin: 0;
+        }
+
+        /* BUTTONS - Sterile / Sharp but with Accent */
+        .btn-primary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent);
+            padding: 1.2rem 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            font-family: 'Manrope', sans-serif;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-text {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 3px;
+        }
+
+        .btn-text:hover {
+            opacity: 0.5;
+        }
+
+        /* MOOD SEPARATORS */
+        .mood-separator {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            height: 80vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        /* HEADER */
+        header {
+            position: relative;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--line-color);
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            transition: box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* Align text baselines */
+        }
+
+        .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            /* Slightly larger */
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            display: block;
+            line-height: 1;
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            /* More space between items */
+            list-style: none;
+            /* Remove bullets */
+        }
+
+        nav a {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero-section {
+            padding-top: 6rem;
+            padding-bottom: var(--spacing-section);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            /* Text content slightly wider */
+            gap: 5rem;
+            align-items: center;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .hero-signature {
+            font-family: 'Herr Von Muellerhoff', cursive;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-top: 2rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .hero-img-wrap {
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        /* TRUST BAR - Warm Silver Grey Background */
+        .trust-bar-section {
+            background-color: var(--bg-silver);
+            /* Subtle differentiation */
+            border-top: 1px solid var(--line-color);
+            border-bottom: 1px solid var(--line-color);
+            padding: 2rem 0; /* Background is full width, container is inside */
+            margin-top: -1px; /* Align with hero border */
+        }
+
+        .trust-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .trust-item {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-main);
+        }
+
+        .trust-item strong {
+            font-weight: 700;
+            margin-right: 0.3rem;
+            font-size: 0.9rem;
+            color: var(--accent);
+            /* Amber Accent */
+        }
+
+        /* SCENARIOS */
+        .scenarios-section {
+            padding-top: var(--spacing-section);
+            padding-bottom: var(--spacing-section);
+        }
+        @media (max-width: 850px) {
+            .scenarios-section { padding-top: 3rem; padding-bottom: 3rem; }
+            .blog-section { padding-top: 3rem; padding-bottom: 3rem; }
+            .trust-section { padding-top: 3rem; padding-bottom: 3rem; }
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4rem;
+            border-top: 1px solid var(--line-color);
+            padding-top: 3rem;
+        }
+
+        .scenario-card {
+            padding-right: 0;
+            border: none;
+        }
+
+        .scenario-icon {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        /* SERVICES - Typographic / Editorial Design */
+        .services-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            /* Wider gap for airiness */
+            margin-top: 4rem;
+        }
+
+        .service-col {
+            border: none;
+            padding: 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .service-col:hover .service-number {
+            transform: translateX(10px);
+            opacity: 1;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--line-color);
+            padding-bottom: 2rem;
+        }
+
+        .service-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--accent);
+            /* Amber */
+            opacity: 0.4;
+            transition: all 0.5s ease;
+        }
+
+        .service-header h3 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--text-main);
+            font-family: 'Cormorant Garamond', serif;
+            /* Use serif for headline to match "Classic" */
+            text-transform: none;
+            /* Reset uppercase if needed */
+            letter-spacing: normal;
+        }
+
+        .service-col:hover .service-header {
+            border-color: var(--accent);
+        }
+
+        .service-col:hover .service-number {
+            transform: translateX(10px);
+            opacity: 1;
+        }
+
+        .service-item {
+            margin-bottom: 4rem;
+            padding-left: 1rem;
+            border-left: 1px solid transparent;
+            transition: border-left 0.3s;
+        }
+
+        .service-item:hover {
+            border-left: 1px solid var(--accent);
+        }
+
+        .service-item-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .service-item-detail.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .service-item-detail p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            padding-top: 0.5rem;
+        }
+
+        .service-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            color: var(--accent);
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            font-family: 'Manrope', sans-serif;
+            transition: opacity 0.3s;
+        }
+
+        .service-toggle:hover {
+            opacity: 0.6;
+        }
+
+        .service-toggle .arrow {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .service-toggle.open .arrow {
+            transform: rotate(90deg);
+        }
+
+        /* METHOD - Uses the dark BG image (or black) */
+        .method-section {
+            background-color: var(--bg-black);
+            color: #fff;
+            padding: var(--spacing-section) 0;
+            text-align: left;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .method-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            /* Dark overlay for readability */
+            z-index: 1;
+        }
+
+        .method-content {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+            position: relative;
+            z-index: 2;
+        }
+
+        .method-content h2,
+        .method-content h3,
+        .method-content p,
+        .method-content .text-lead {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .method-content h3 {
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        /* Abstract Data Viz */
+        .data-viz {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            gap: 10px;
+            height: 60px;
+            margin: 0 auto 2rem auto;
+            margin-left: var(--gutter);
+            margin-bottom: 4rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 2rem;
+            color: #fff;
+        }
+
+        .bar {
+            width: 6px;
+            background: #fff;
+            border-radius: 0;
+        }
+
+        /* ETHICS / TRUST - Full Width Background setup */
+        .trust-section-wrapper {
+            background-color: var(--bg-champagne);
+            width: 100%;
+        }
+
+        .trust-section {
+            padding-top: var(--spacing-section);
+            padding-bottom: var(--spacing-section);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .quote-box {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            font-style: italic;
+            border: none;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+            color: var(--text-main);
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 851px) {
+            .about-grid > div:first-child {
+                border-right: 1px solid var(--line-color);
+            }
+        }
+
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        @media (max-width: 850px) {
+            .timeline-row {
+                grid-template-columns: 80px 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .year {
+            font-weight: 600;
+            color: var(--accent);
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .lit-item a {
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .lit-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .lit-two-col h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .lit-item {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .lit-item strong {
+            font-weight: 600;
+        }
+
+        /* BLOG */
+        .blog-section {
+            padding-top: var(--spacing-section);
+            padding-bottom: var(--spacing-section);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            border: 1px solid var(--line-color);
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-card .blog-meta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .blog-card h4 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* CONTACT - Minimalist / No Image */
+        .contact-minimal-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid var(--line-color);
+            padding: 4rem;
+            background: #fff;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.03);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 1rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .contact-image {
+            background: url('https://placehold.co/800x1000/eeeeee/333333?text=Office+Ambience') no-repeat center center;
+            background-size: cover;
+            filter: grayscale(100%);
+        }
+
+        .contact-form-col {
+            padding: 4rem;
+            background: #fff;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 1rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--line-color);
+            background: var(--bg-silver);
+            /* Light footer */
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .header-inner {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.6rem 0;
+                gap: 0;
+            }
+            .logo-main { font-size: 0.72rem; letter-spacing: 0.04em; flex: 1; max-width: calc(100% - 60px); }
+            nav ul { gap: 0; flex-direction: column; }
+            nav a { font-size: 0.85rem; }
+            #lang-switch { display: none; }
+            .hero-section,
+            .scenarios-grid,
+            .services-wrapper,
+            .trust-section,
+            .about-grid,
+            .lit-two-col,
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-section { padding-top: 2rem; }
+            .hero-img-wrap { order: -1; margin-bottom: 0.5rem; }
+            h1 { font-size: 2.4rem; margin-bottom: 1.5rem; }
+            h2 { font-size: 1.9rem; }
+            h4 { font-size: 1.5rem; }
+            .section-spacer { padding: 3rem 0; }
+            .trust-grid { flex-direction: column; gap: 1rem; align-items: flex-start; }
+            .scenarios-grid { gap: 2rem; }
+            .service-number { font-size: 3rem; }
+            .service-header { margin-bottom: 1.5rem; }
+            .mood-separator { height: 35vh; background-attachment: scroll; }
+            .about-grid > div:first-child { border-right: none; border-bottom: none; padding-right: 0; padding-bottom: 2rem; }
+            .lit-two-col { gap: 2rem; }
+            .blog-grid { gap: 1.5rem; }
+            .lit-two-col { grid-template-columns: 1fr; gap: 2rem; }
+            .blog-card { padding: 1.5rem; }
+            .contact-minimal-wrapper { padding: 2rem 1.5rem; }
+            footer { flex-direction: column; gap: 1rem; padding: 2rem 0; }
+            footer .container { flex-direction: column; gap: 0.75rem; }
+            .method-content h2 { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            .btn-primary { padding: 1rem 1.5rem; width: 100%; display: block; text-align: center; }
+            nav ul { gap: 0.6rem; }
+        }
+
+        /* HAMBURGER MOBILE NAV */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            margin-left: 0.5rem;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-main);
+            transition: all 0.3s ease;
+        }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        @media (max-width: 850px) {
+            .hamburger { display: flex; }
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--line-color);
+                z-index: 200;
+            }
+            nav.open { display: block; }
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+            }
+            nav ul li a {
+                display: block;
+                padding: 0.85rem 2rem;
+                font-size: 0.85rem;
+                border-bottom: 1px solid var(--line-color);
+            }
+        }
+</style>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<header>
+        <div class="container header-inner">
+            <a href="#" class="logo-main">Evolvion <span style="font-weight: 300;">Leadership Advisory</span></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#services" onclick="closeNav()">Leistungen</a></li>
+                    <li><a href="#profil" onclick="closeNav()">Profil</a></li>
+                    <li><a href="#ansatz" onclick="closeNav()">Wie ich arbeite</a></li>
+                    <li><a href="#blog" onclick="closeNav()">Insights</a></li>
+                    <li><a href="#kontakt" onclick="closeNav()">Kontakt</a></li>
+                    <li id="lang-switch-mobile-wrapper" style="display: none;"><a href="#" onclick="toggleLang();closeNav();return false;" style="color:var(--accent);">EN / DE (Current: DE)</a></li>
+                </ul>
+            </nav>
+            <div style="display: flex; align-items: center;">
+                <button id="lang-switch" onclick="toggleLang()" style="font-family:'Manrope',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;border:none;color:var(--text-main);background:transparent;padding:0.4rem 0.8rem;cursor:pointer;transition:all 0.3s;min-width:40px;opacity:0.7;">EN</button>
+                <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menü">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 1. HERO SECTION - Minimalist / Storytelling -->
+<section class="container hero-section">
+        <div class="hero-text">
+            <h3>Executive Development &amp; Coaching</h3>
+            <h1>
+                Führen kann man lernen!
+            </h1>
+            <p class="text-lead">
+                "Mit der Erfahrung aus 3.000 Executive Assessments und Feedbacks helfe ich Ihnen, in Ihrer Rolle zu
+                wachsen."
+            </p>
+
+            <span class="hero-signature">Tilman Gerhardt</span>
+
+            <a href="#kontakt" class="btn-primary">Vertrauliches Gespräch</a>
+        </div>
+        <div class="hero-img-wrap">
+            <img src="/wp-content/uploads/2026/03/tilman-vorne.jpg" alt="Dr. Tilman Gerhardt Portrait" style="width: 100%; height: auto;">
+        </div>
+    </section>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 2. TRUST BAR - Warm Silver BG -->
+<div class="trust-bar-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <strong>30 Jahre</strong> Erfahrung
+                </div>
+                <div class="trust-item">
+                    <strong>Ex-Partner</strong> Egon Zehnder
+                </div>
+                <div class="trust-item">
+                    <strong>3.000+</strong> Assessments
+                </div>
+                <div class="trust-item">
+                    <strong>Expertise</strong> <a
+                        href="https://www.egonzehnder.com/what-we-do/breakthrough-leadership-programs/insights/leadership-scrum"
+                        target="_blank" style="border-bottom: 1px solid var(--accent); color: var(--accent);">Leadership
+                        SCRUM</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 3. SCENARIOS - Minimalist Grid -->
+<section id="ansatz" class="container scenarios-section">
+        <div style="margin-bottom: 3rem;">
+            <h3>Führungskräfteentwicklung ist eine Reise</h3>
+            <h2 style="max-width: 800px;">Analyse ist wichtig, Momentum ist wichtiger.</h2>
+        </div>
+        <div class="scenarios-grid">
+            <div class="scenario-card">
+                <span class="scenario-icon">I.</span>
+                <h4>Die Nachfolge</h4>
+                <p>
+                    Eine Schlüsselposition wird frei. Ist die interne Lösung bereit? Kann ein Blick von außen helfen und Entwicklungspfade oder Alternativen aufzeigen? Diese Entscheidung prägt die nächsten Jahre.
+                </p>
+            </div>
+            <div class="scenario-card">
+                <span class="scenario-icon">II.</span>
+                <h4>Der Spiegel</h4>
+                <p>
+                    Sie sind erfolgreich, aber das ehrliche Feedback versiegt. Um auf das nächste Level zu kommen,
+                    brauchen Sie einen unabhängigen Sparringspartner.
+                </p>
+            </div>
+            <div class="scenario-card">
+                <span class="scenario-icon">III.</span>
+                <h4>Die Stagnation</h4>
+                <p>
+                    Das Führungsteam funktioniert, aber es inspiriert nicht mehr. Es fehlt der Impuls für echte
+                    Verhaltensänderung und neue Dynamik.
+                </p>
+            </div>
+        </div>
+    </section>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 5. USP / METHOD - The Dark Section (Storytelling with BG) -->
+<section class="method-section" style="background-image: url('/wp-content/uploads/2026/03/image3.jpeg');">
+        <div class="method-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="data-viz">
+                <span
+                    style="font-family: 'Manrope', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: #fff;">Leadership
+                    SCRUM</span>
+            </div>
+
+            <div class="method-content">
+                <h2>Der Algorithmus der Veränderung.</h2>
+                <div style="height: 1px; width: 100px; background: #fff; margin: 2rem 0;"></div>
+                <p class="text-lead" style="color: #ddd;">
+                    Stellen Sie sich vor, Sie könnten genau bestimmen, welche Verhaltensänderungen das größte Wachstum
+                    in Ihren Führungskompetenzen bewirken.
+                </p>
+                <p>
+                    Der Leadership SCRUM Algorithmus analysiert 360°-Feedback-Daten und übersetzt sie in
+                    präzise Handlungsanweisungen. Die vorgeschlagenen Verhaltensveränderungen werden in einem
+                    „Feedforward" besprochen und auf ihre Relevanz überprüft. Es geht dabei nicht um Bewertung, sondern
+                    um zukunftsorientierte Entwicklung. Keine andere Software weltweit kann gezielte
+                    Verhaltensvorschläge für Führungskräfte innerhalb eines bewährten, skalierten Kompetenzmodells
+                    generieren.
+                </p>
+
+                <div style="display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;">
+                    <a href="https://www.egonzehnder.com/what-we-do/breakthrough-leadership-programs/insights/leadership-scrum" target="_blank" class="btn-primary" style="border-color: #fff; color: #fff; margin-top: 0;">Artikel lesen</a>
+                    <a href="#kontakt" class="btn-primary" style="border-color: #fff; color: #fff; margin-top: 0;">Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 6. EXPERIENCE / VITA - Classic Layout -->
+<section id="profil" class="container section-spacer">
+        <div class="about-grid">
+            <div style="padding-right: 2rem;">
+                <h3>Der Hintergrund</h3>
+                <h2>30 Jahre<br>Expertise.</h2>
+                <p style="margin-top: 2rem;">
+                    "Ich habe Büros geleitet, Practice Groups geführt und tausende von Karrieren begleitet. Ich kenne
+                    die Dynamik im Boardroom nicht aus Büchern, sondern aus persönlichem Erleben."
+                </p>
+                <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                    Zertifizierter systemischer Coach (ARTOP, Berlin) und in verschiedenen psychometrischen Verfahren
+                    (u.a. 16PF, HDS, ITC).
+                </p>
+                <img src="/wp-content/uploads/2026/03/tilman-hinten.jpg" alt="Dr. Tilman Gerhardt"
+                    style="width: 100%; margin-top: 2rem; filter: grayscale(100%); object-fit: cover; object-position: center 20%;">
+            </div>
+            <div>
+                <div class="timeline-row">
+                    <span class="year">2025</span>
+                    <div>
+                        <strong>Gründer, Evolvion Leadership Advisory</strong><br>
+                        Boutique-Beratung für Executive Development &amp; Coaching.
+                    </div>
+                </div>
+                <div class="timeline-row">
+                    <span class="year">1995</span>
+                    <div>
+                        <strong>Partner, Egon Zehnder</strong><br>
+                        Leitung Technology Practice &amp; Leadership Advisory &amp; Partnerevaluation.<br>
+                        Ca. 400 Projektleitungen, &gt;3.000 Management Assessments.
+                    </div>
+                </div>
+                <div class="timeline-row">
+                    <span class="year">1992</span>
+                    <div>
+                        <strong>Manager, A.T. Kearney</strong><br>
+                        Strategieberatung &amp; Promotion (Dr. rer. oec.).
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem;">
+                    <h3>Literatur</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem;">Ausgewählte
+                        Veröffentlichungen, die meine Arbeitsweise und meine Haltung zu Führungskräfteentwicklung
+                        beschreiben.</p>
+                    <div class="lit-two-col">
+                        <div>
+                            <h4>Veröffentlichungen</h4>
+                            <div class="lit-item"><strong>„Kennen Sie Ihre Wirkung?"</strong>, Gerhardt/Pentz, Harvard
+                                Business Manager, April 2025, S.&nbsp;56–65</div>
+                            <div class="lit-item"><strong>„Inspiring Next Level Leadership"</strong>, Gerhardt, <a
+                                    href="https://www.egonzehnder.com/what-we-do/breakthrough-leadership-programs/insights/leadership-scrum"
+                                    target="_blank">Egon Zehnder Publikation 2023</a></div>
+                            <div class="lit-item"><strong>„Entwickeln statt bewerten"</strong>, Gerhardt/Riedel, in:
+                                Executive Assessment, Weinert/Stulle (Hrsg.), Springer-Verlag 2015, S.&nbsp;201–210
+                            </div>
+                            <div class="lit-item"><strong>„Potenzial als Rohstoff der Zukunft"</strong>,
+                                Gerhardt/Riedel/Strella, zfo 2015, 84.&nbsp;Jg, S.&nbsp;84–88</div>
+                            <div class="lit-item"><strong>„Management Appraisal"</strong>, Gerhardt/Ritter, Campus
+                                Verlag 2004, 183 Seiten</div>
+                            <div class="lit-item"><strong>„Wie gut sind unsere Chefs?"</strong>, Gerhardt/Katzensteiner,
+                                Leitartikel WirtschaftsWoche Nr.&nbsp;35, 21.8.2003</div>
+                        </div>
+                        <div>
+                            <h4>Leseempfehlungen</h4>
+                            <div class="lit-item"><strong>"The Energy Advantage"</strong>, Ricardo Sunderland, Harper
+                                Collins Leadership, 2024</div>
+                            <div class="lit-item"><strong>"From Strength to Strength"</strong>, Arthur Brooks,
+                                Bloomsbury, 2023</div>
+                            <div class="lit-item"><strong>„Breaking the Habit of Being Yourself"</strong>, Joe Dispenza,
+                                Hay House, 2012</div>
+                            <div class="lit-item"><strong>"Helping"</strong>, Edgar Schein, Berrett-Koehler Pub., 2009
+                            </div>
+                            <div class="lit-item"><strong>„What Got You Here Won't Get You There"</strong>, Marshall
+                                Goldsmith, Hyperion, 2007</div>
+                            <div class="lit-item"><strong>"The Middle Passage"</strong>, James Hollis, Inner City Books,
+                                1993</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- MOOD SEPARATOR 1: Visual Break -->
+<div class="mood-separator" style="background-image: url('/wp-content/uploads/2026/03/berge2.jpeg');"></div>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 4. SERVICES - Dramatic Split -->
+<section id="services" class="container section-spacer">
+        <h3>Leistungen</h3>
+        <h2>Für Unternehmen. Für Führungskräfte.</h2>
+        <p style="max-width: 700px;">Sie stehen vor der Herausforderung, Schlüsselpositionen optimal zu besetzen,
+            Führungsteams weiterzuentwickeln oder Ihre Organisation zukunftsfähig aufzustellen? Ich unterstütze Sie mit
+            maßgeschneiderten Lösungen.</p>
+
+        <div class="services-wrapper">
+            <!-- Left: Für Unternehmen -->
+            <div class="service-col">
+                <div class="service-header">
+                    <span class="service-number">I.</span>
+                    <h3>Für Unternehmen</h3>
+                </div>
+
+                <div class="service-item">
+                    <h4>Nachfolgeplanung</h4>
+                    <p>Potenziale intern und extern validieren, um Risiken bei der Besetzung zu minimieren.</p>
+                    <button class="service-toggle" onclick="toggleDetail(this)"><span class="arrow">&#9654;</span> Mehr
+                        erfahren</button>
+                    <div class="service-item-detail">
+                        <p>Nachfolge ist mehr als die Besetzung einer Position. Ich begleite Sie dabei, nachhaltige
+                            Lösungen zu finden, Potenziale zu erkennen und Übergänge reibungslos zu gestalten – mit
+                            analytischer Präzision und einem tiefen Verständnis für Ihre spezifischen Anforderungen.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <h4>Leadership Assessment</h4>
+                    <p>Unabhängige Gutachten über Management-Qualitäten und Cultural Fit.</p>
+                    <button class="service-toggle" onclick="toggleDetail(this)"><span class="arrow">&#9654;</span> Mehr
+                        erfahren</button>
+                    <div class="service-item-detail">
+                        <p>Erhalten Sie eine fundierte, unabhängige Einschätzung zu Stärken, Entwicklungsfeldern und
+                            Potenzialen Ihrer Führungskräfte. Mein Ziel: Entwicklungschancen aufzeigen und
+                            Führungskräfte inspirieren, ihr volles Potenzial zu entfalten.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <h4>„Feedforward" Entwicklungsdialog</h4>
+                    <p>Zukunftsorientierte Entwicklung statt rückwärtsgewandtem Feedback.</p>
+                    <button class="service-toggle" onclick="toggleDetail(this)"><span class="arrow">&#9654;</span> Mehr
+                        erfahren</button>
+                    <div class="service-item-detail">
+                        <p>Feedback schaut zurück und analysiert. „Feedforward" bewertet mögliche
+                            Verhaltensveränderungen einer Führungskraft, um diese in einem Dialog zu diskutieren und auf
+                            ihre Relevanz zu überprüfen. In der Regel finden sich schnell attraktive Entwicklungsfelder,
+                            die überzeugen und verinnerlicht werden.</p>
+                    </div>
+                </div>
+                <a href="#kontakt" class="btn-text" style="display: inline-block; margin-top: 1rem;">Für Unternehmen
+                    anfragen</a>
+            </div>
+
+            <!-- Right: Für Führungskräfte -->
+            <div class="service-col">
+                <div class="service-header">
+                    <span class="service-number">II.</span>
+                    <h3>Für Führungskräfte</h3>
+                </div>
+
+                <div class="service-item">
+                    <h4>Entwicklungsplanung</h4>
+                    <p>Individuelle Entwicklungspläne basierend auf fundierten Analysen und modernen Tools.</p>
+                    <button class="service-toggle" onclick="toggleDetail(this)"><span class="arrow">&#9654;</span> Mehr
+                        erfahren</button>
+                    <div class="service-item-detail">
+                        <p>Gemeinsam erarbeiten wir individuelle Entwicklungspläne, die auf fundierten Analysen,
+                            persönlichem Feedback und einer Kombination aus bewährten Methoden und modernen Tools wie
+                            Leadership SCRUM basieren. Das „nächste Level" in Führungskompetenzen ist das Ziel.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <h4>Coaching</h4>
+                    <p>Begleitung in herausfordernden Situationen als zertifizierter systemischer Coach.</p>
+                    <button class="service-toggle" onclick="toggleDetail(this)"><span class="arrow">&#9654;</span> Mehr
+                        erfahren</button>
+                    <div class="service-item-detail">
+                        <p>Als zertifizierter systemischer Coach begleite ich Sie in herausfordernden Situationen,
+                            unterstütze bei Reflexion und Weiterentwicklung und helfe, individuelle Lösungen für
+                            komplexe Fragestellungen zu finden.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <h4>Karriereberatung</h4>
+                    <p>Klarer Blick für Chancen und Risiken mit fundiertem Wissen über den Arbeitsmarkt.</p>
+                    <button class="service-toggle" onclick="toggleDetail(this)"><span class="arrow">&#9654;</span> Mehr
+                        erfahren</button>
+                    <div class="service-item-detail">
+                        <p>Ich unterstütze Sie dabei, Ihre Ziele zu erkennen und zu erreichen – mit klarem Blick für
+                            Chancen und Risiken, fundiertem Wissen über den Arbeitsmarkt und einem starken Netzwerk.</p>
+                    </div>
+                </div>
+                <a href="#kontakt" class="btn-text" style="display: inline-block; margin-top: 1rem;">Für Führungskräfte
+                    anfragen</a>
+            </div>
+        </div>
+    </section>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- MOOD SEPARATOR 2: Visual Break -->
+<div class="mood-separator" style="background-image: url('/wp-content/uploads/2026/03/kirche3.jpeg');"></div>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 7. PRINCIPLES - Champagne Background Full Width -->
+<div class="trust-section-wrapper">
+        <section class="container trust-section">
+            <div>
+                <h3 id="ansatz">Wie ich arbeite</h3>
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Passung vor Bewertung. Entwicklung vor Urteil.</h2>
+                <p style="font-size: 1rem;">In drei Jahrzehnten bei Egon Zehnder habe ich gelernt: Es geht nicht darum, Führungskräfte in „gut" oder „schlecht" einzuteilen, sondern darum, die optimale Passung zwischen Person und Rolle zu finden – und individuelle Entwicklungspotenziale zu berücksichtigen.</p>
+                <p style="font-size: 1rem;">Als Entwicklungspartner gehe ich über Analyse und Feedback hinaus. Ich möchte echte Motivation wecken. Mein Ansatz basiert auf Partnerschaft, Respekt und der Überzeugung, dass Führungskompetenz ein fortlaufender Entwicklungsprozess ist. Meine Rolle: Ideengeber und Spiegel. Die eigentliche Arbeit macht die Führungskraft selbst.</p>
+                <p style="font-size: 0.85rem; color: var(--text-light); font-style: italic;">Zertifizierter systemischer Coach (ARTOP, Berlin). Selbstverständlich unterziehe ich mich regelmäßiger Supervision.</p>
+            </div>
+            <div>
+                <h3>Prinzipien</h3>
+                <p><strong>Diskretion als höchstes Gut.</strong></p>
+                <p style="margin-bottom: 1.5rem;">Kein Name-Dropping. Unabhängigkeit von großen Agenturnetzwerken. Ein
+                    geschützter Raum für offene Worte.</p>
+                <p><strong>Methodenkompetenz mit Augenmaß.</strong></p>
+                <p style="margin-bottom: 1.5rem;">Bewährte Methoden, individuell angewandt. Keine Schablone, sondern
+                    maßgeschneiderte Begleitung.</p>
+                <p><strong>Konsequente Vorwärtsorientierung.</strong></p>
+                <p>Nicht zurückschauen und bewerten, sondern Zukunft gestalten. Feedforward statt Feedback.</p>
+            </div>
+        </section>
+    </div>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 8. BLOG / INSIGHTS SECTION -->
+<section id="blog" class="container blog-section">
+        <h3>Leadership Insights - case by case</h3>
+        <h2>Aus der Praxis der Führungskräfteentwicklung.</h2>
+        <p>Was in der Praxis wirkt: Situationen, Interventionen, Impulse – jeden Monat.</p>
+
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-meta">#01 · März 2026</div>
+                <h4>When your boss isn’t your fan anymore.</h4>
+                <p>What happens when an executive’s career suddenly stalls under a new leader?</p>
+                <a href="blog-post-01.html" class="btn-text"
+                    style="margin-top: 1rem; display: inline-block;">Weiterlesen</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider-line"></div>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- 9. CONTACT - Minimalist / No Image -->
+<section id="kontakt" class="section-spacer">
+        <div class="container">
+            <div class="contact-minimal-wrapper">
+                <h3>Kontakt</h3>
+                <h2 style="margin-bottom: 2rem;">Der erste Schritt.</h2>
+
+                <p style="font-size: 0.9rem; margin-bottom: 3rem; margin-left: auto; margin-right: auto;">
+                    Starten Sie den Dialog. Absolute Diskretion garantiert.
+                </p>
+
+                <form>
+                    <div class="form-row">
+                        <input type="text" placeholder="Ihr Name" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="email" placeholder="Ihre E-Mail" required>
+                    </div>
+                    <div class="form-row">
+                        <textarea rows="3" placeholder="Ihr Anliegen (Optional)"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 2rem;">Absenden</button>
+
+                    <div
+                        style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee; font-size: 0.85rem; text-align: center; color: var(--text-light);">
+                        <a
+                            href="mailto:tilman.gerhardt@evolvionleadership.com">tilman.gerhardt@evolvionleadership.com</a><br>
+                        +49 8177 7694922
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div>
+                &copy; 2026 Evolvion Leadership Advisory
+            </div>
+            <div>
+                <a href="#" onclick="document.getElementById('modal-impressum').style.display='flex';return false;" style="margin-left: 2rem;">Impressum</a>
+                <a href="#" onclick="document.getElementById('modal-datenschutz').style.display='flex';return false;" style="margin-left: 2rem;">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        function toggleNav() {
+            const nav = document.getElementById('main-nav');
+            const btn = document.getElementById('hamburger');
+            nav.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
+        function closeNav() {
+            document.getElementById('main-nav').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('open');
+        }
+
+        // Sticky header shadow on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        // Service accordion toggle
+        function toggleDetail(btn) {
+            const detail = btn.nextElementSibling;
+            detail.classList.toggle('open');
+            btn.classList.toggle('open');
+            const isOpen = detail.classList.contains('open');
+            btn.innerHTML = '<span class="arrow">&#9654;</span> ' + (isOpen ? 'Weniger' : 'Mehr erfahren');
+        }
+    </script>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- IMPRESSUM MODAL -->
+<div id="modal-impressum" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+        <div style="background:#fff;max-width:700px;width:90%;max-height:80vh;overflow-y:auto;padding:3rem;position:relative;">
+            <button onclick="document.getElementById('modal-impressum').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;">×</button>
+            <h2 style="font-family:'Cormorant Garamond',serif;margin-bottom:2rem;">Impressum</h2>
+            <p><strong>Evolvion Leadership Advisory by Tilman Gerhardt</strong><br>
+            Dr. Tilman Gerhardt<br>
+            Lerchenweg 6, 82541 Münsing<br>
+            <a href="mailto:tilman.gerhardt@evolvionleadership.com">tilman.gerhardt@evolvionleadership.com</a><br>
+            +49 8177 7694922<br>
+            UStID DE458911224</p>
+            <p style="margin-top:1.5rem;"><strong>Lassen Sie uns ins Gespräch kommen!</strong><br>
+            Sie möchten mehr erfahren oder ein unverbindliches Erstgespräch vereinbaren? Ich freue mich auf Ihre Kontaktaufnahme – per E-Mail, Telefon oder über das Kontaktformular.</p>
+        </div>
+    </div>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- DATENSCHUTZ MODAL -->
+<div id="modal-datenschutz" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+        <div style="background:#fff;max-width:700px;width:90%;max-height:80vh;overflow-y:auto;padding:3rem;position:relative;">
+            <button onclick="document.getElementById('modal-datenschutz').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;">×</button>
+            <h2 style="font-family:'Cormorant Garamond',serif;margin-bottom:2rem;">Datenschutz und Einsatz von Künstlicher Intelligenz</h2>
+            
+            <h3 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1.2rem;font-weight:600;">Datenschutz</h3>
+            <p>Der Schutz Ihrer persönlichen Daten ist mir ein echtes Anliegen. Ich verarbeite Ihre Daten nach den Vorgaben der Datenschutz-Grundverordnung (DSGVO) und aller weiteren geltenden Datenschutzgesetze.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">1. Wer ist verantwortlich?</h4>
+            <p>Verantwortlich für die Datenverarbeitung im Rahmen von Evolvion Leadership Advisory bin ich, Dr. Tilman Gerhardt. Bei Fragen oder Anliegen können Sie sich jederzeit direkt an mich wenden.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">2. Unabhängige Verantwortung</h4>
+            <p>Ich arbeite als eigenständiger Berater und Coach. Für die Verarbeitung Ihrer Daten im Rahmen meiner Dienstleistungen bin ausschließlich ich verantwortlich. Falls Sie im Rahmen eines Projekts mit weiteren Partnern zusammenarbeiten, gelten ergänzend deren Datenschutzbestimmungen. In diesem Fall bleibt die Verantwortung für die Datenverarbeitung jeweils getrennt – es handelt sich nicht um eine gemeinsame Verarbeitung.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">3. Welche Daten werden verarbeitet?</h4>
+            <p>Ich verarbeite personenbezogene Daten, die Sie mir im Rahmen eines Projektes, sei es ein Coaching, ein Assessment oder eine andere Dienstleistung anvertrauen. Dazu gehören zum Beispiel Ihr Name, Ihre Kontaktdaten, Informationen zu Ihrem beruflichen Hintergrund sowie alle Angaben, die für die Zusammenarbeit relevant sind.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">4. Wofür werden Ihre Daten genutzt?</h4>
+            <p>Ihre personenbezogenen Daten werden ausschließlich im Rahmen meiner Dienstleistungen verwendet – also für Coaching, Assessments und Beratungen. Ich nutze Ihre Daten, um Sie individuell zu begleiten, Sie zu beraten und gemeinsam passende Lösungen zu entwickeln. Eine Weitergabe an Dritte erfolgt nur, wenn dies gesetzlich vorgeschrieben ist oder Sie ausdrücklich zustimmen.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">5. Wie werden Ihre Daten geschützt?</h4>
+            <p>Ich setze technische und organisatorische Maßnahmen ein, um Ihre Informationen vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Nur ich und ggf. sorgfältig ausgewählte Dienstleister oder Angestellte, die sich ebenfalls zum Datenschutz verpflichten, haben Zugriff auf Ihre Daten.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">6. Ihre Rechte</h4>
+            <p>Sie haben das Recht, jederzeit Auskunft über Ihre gespeicherten Daten zu erhalten, diese berichtigen oder löschen zu lassen, der Verarbeitung zu widersprechen oder die Einschränkung der Verarbeitung zu verlangen. Wenn Sie Fragen dazu haben oder Ihre Rechte wahrnehmen möchten, melden Sie sich gerne direkt bei mir.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">7. Dauer der Speicherung</h4>
+            <p>Ihre Daten werden nur so lange gespeichert, wie es für die Zusammenarbeit notwendig ist oder wie es gesetzliche Vorgaben verlangen. Danach werden sie sicher gelöscht.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">8. Änderungen</h4>
+            <p>Sollte sich etwas an den Datenschutzbestimmungen ändern, informiere ich Sie transparent und rechtzeitig.</p>
+
+            <div class="divider-line" style="margin: 2rem 0;"></div>
+            
+            <h3 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1.2rem;font-weight:600;">Einsatz von Künstlicher Intelligenz (KI)</h3>
+            <p>Ich setze ausgewählte KI-gestützte Werkzeuge ein, um meine Arbeit effizienter zu gestalten und die Qualität meiner Dienstleistungen zu erhöhen – beispielsweise zur Strukturierung von Informationen, zur Vorbereitung von Unterlagen oder zur Unterstützung bei der Analyse komplexer Themen. Dabei gilt für mich ein klarer Grundsatz: KI dient ausschließlich als Hilfsmittel. Entscheidungen treffe ich immer persönlich und verantwortungsvoll.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">1. Keine automatisierten Entscheidungen</h4>
+            <p>KI-Tools werden von mir nicht eingesetzt, um Entscheidungen über Personen zu treffen oder Bewertungen automatisiert zu erstellen. Alle Einschätzungen, Analysen und Empfehlungen entstehen durch meine eigene fachliche Expertise und Erfahrung.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">2. Sorgsamer Umgang mit personenbezogenen Daten</h4>
+            <p>Personenbezogene Daten meiner Klienten werden nur dann in KI-gestützten Anwendungen verarbeitet, wenn dies datenschutzrechtlich zulässig ist und ein angemessenes Schutzniveau gewährleistet wird. Sensible oder vertrauliche Informationen gebe ich grundsätzlich nur in Systeme ein, die vertraglich und technisch DSGVO-konform abgesichert sind. Wo dies nicht gewährleistet ist, verzichte ich auf die Nutzung dieser Tools.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">3. Transparenz und Zweckbindung</h4>
+            <p>Der Einsatz von KI erfolgt ausschließlich zur Unterstützung meiner Dienstleistungen, etwa zur Vorbereitung von Gesprächen, zur Strukturierung von Feedback oder zur Erstellung von Textentwürfen. Ich nutze KI nicht zur Profilbildung, nicht zur automatisierten Entscheidungsfindung und nicht zur Bewertung von Führungskräften.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">4. Verantwortlichkeit und Kontrolle</h4>
+            <p>Ich bleibe jederzeit vollständig verantwortlich für die Inhalte, Analysen und Empfehlungen, die im Rahmen meiner Arbeit entstehen. KI-gestützte Vorschläge werden von mir geprüft, bewertet und angepasst. Die finale inhaltliche Verantwortung liegt immer bei mir.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">5. Datensicherheit und Auswahl der Dienstleister</h4>
+            <p>Ich verwende ausschließlich KI-Tools von Anbietern, die angemessene technische und organisatorische Maßnahmen zum Schutz personenbezogener Daten gewährleisten. Dazu gehören Verschlüsselung, Zugriffsbeschränkungen und klare vertragliche Regelungen zur Datenverarbeitung. Eine Weitergabe von Daten an Dritte erfolgt nur, wenn dies gesetzlich vorgeschrieben ist oder Sie ausdrücklich zustimmen.</p>
+            
+            <h4 style="margin:1.5rem 0 0.5rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;">6. Ihre Rechte im Zusammenhang mit KI</h4>
+            <p>Auch beim Einsatz von KI-gestützten Werkzeugen gelten Ihre Rechte aus der DSGVO uneingeschränkt. Sie können jederzeit Auskunft darüber verlangen, ob und in welchem Umfang KI-Tools im Rahmen unserer Zusammenarbeit eingesetzt wurden. Auf Wunsch erläutere ich Ihnen gerne, wie KI in meinem Arbeitsprozess unterstützend wirkt.</p>
+        </div>
+    </div>
+
+    <script>
+        // Language toggle DE/EN (placeholder — full translation in next iteration)
+        let currentLang = 'de';
+        function toggleLang() {
+            const btn = document.getElementById('lang-switch');
+            const navLink = document.querySelector('a[onclick*="toggleLang"]');
+            
+            if (currentLang === 'de') {
+                currentLang = 'en';
+                if(btn) btn.textContent = 'DE';
+                if(navLink) navLink.textContent = 'EN / DE (Current: EN)';
+            } else {
+                currentLang = 'de';
+                if(btn) btn.textContent = 'EN';
+                if(navLink) navLink.textContent = 'EN / DE (Current: DE)';
+            }
+        }
+    </script>
+<!-- /wp:html -->
